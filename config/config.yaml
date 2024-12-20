@@ -1,0 +1,19 @@
+producer:
+  count: 3
+  produce_interval: 2  # seconds
+  start_urls:
+    - 'https://www.novinky.cz/'
+    - 'https://www.idnes.cz/'
+    - 'https://www.ctk.cz/'
+
+consumer:
+  count: 2
+  consume_interval: 1  # seconds
+  output_dir: 'articles'
+
+queue:
+  max_size: 100
+
+logging:
+  level: INFO
+  file: app.log
