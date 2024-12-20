@@ -127,7 +127,7 @@ class CrawlerProducer(threading.Thread):
                     try:
                         self.queue.put(article_data, timeout=1)
                         self.visited_urls.add(current_url)
-                        logging.info(f"{self.name} produced article: {article_data['title']}")
+                        logging.info(f"{self.name} produced article")
                     except Exception as e:
                         logging.error(f"{self.name} failed to put article in queue: {e}")
 

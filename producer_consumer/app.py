@@ -48,8 +48,10 @@ class CrawlerApp:
         logging.info("Starting producers and consumers.")
         for producer in self.producers:
             producer.start()
+
         for consumer in self.consumers:
             consumer.start()
+
 
     def stop(self):
         logging.info("Stopping producers and consumers.")

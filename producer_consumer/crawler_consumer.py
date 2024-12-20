@@ -32,7 +32,7 @@ class ArticleConsumer(threading.Thread):
         # Check for duplicates based on URL
         if not any(article['url'] == article_data['url'] for article in self.articles):
             self.articles.append(article_data)
-            logging.info(f"{self.name} saved article: {article_data['title']}")
+            logging.info(f"{self.name} saved article")
 
             # Save to file every 10 articles
             if len(self.articles) % 10 == 0:

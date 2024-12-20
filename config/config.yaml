@@ -7,7 +7,7 @@ producer:
     - 'https://www.ctk.cz/'
 
 consumer:
-  count: 2
+  count: 3
   consume_interval: 1  # seconds
   output_dir: 'articles'
 
