@@ -31,16 +31,16 @@ def main():
     try:
         config = Config(config_path=args.config)
     except Exception as e:
-        print(f"Error loading configuration: {e}")
+        raise(f"Error loading configuration: {e}")
         sys.exit(1)
 
     # Create and run the crawler application
     app = CrawlerApp(config)
 
     try:
-        app.run(run_time=args.time)
+        app.run()
     except Exception as e:
-        print(f"Error during execution: {e}")
+        raise(f"Error during execution: {e}")
         sys.exit(1)
 
 

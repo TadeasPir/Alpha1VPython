@@ -1,24 +1,16 @@
-import time
+
 import unittest
 from unittest.mock import Mock, patch, MagicMock, mock_open, call, ANY
-import threading
-import queue
-import logging
-import json
+
 
 import requests
-import yaml
+
 import os
 from bs4 import BeautifulSoup
-from datetime import datetime
 from queue import Queue
 
-# Import the classes we're testing
-from producer_consumer.config import Config
-from producer_consumer.app import CrawlerApp
 from producer_consumer.crawler_producer import CrawlerProducer
 from producer_consumer.crawler_consumer import ArticleConsumer
-from producer_consumer.utils import setup_logging
 
 
 class TestConfig(unittest.TestCase):
@@ -64,9 +56,9 @@ class TestCrawlerProducer(unittest.TestCase):
 
     def test_is_valid_article_url(self):
         valid_urls = [
-            'https://www.novinky.cz/clanek/test',
-            'https://www.idnes.cz/zpravy/test',
-            'https://www.ctk.cz/clanek/test'
+            'https://www.novinky.cz/clanek/',
+            'https://www.idnes.cz/zpravy/',
+            'https://www.ctk.cz/clanek/ß'
         ]
         invalid_urls = [
             'https://www.example.com/article',
@@ -134,17 +126,17 @@ class TestCrawlerProducer(unittest.TestCase):
     def test_crawl_url_with_network_errors(self, mock_get):
         # Test timeout
         mock_get.side_effect = requests.Timeout()
-        result = self.producer.crawl_url('https://www.novinky.cz/test')
+        result = self.producer.crawl_url('https://www.novinky.cz/')
         self.assertIsNone(result)
 
         # Test connection error
         mock_get.side_effect = requests.ConnectionError()
-        result = self.producer.crawl_url('https://www.novinky.cz/test')
+        result = self.producer.crawl_url('https://www.novinky.cz/')
         self.assertIsNone(result)
 
         # Test HTTP error
         mock_get.side_effect = requests.HTTPError()
-        result = self.producer.crawl_url('https://www.novinky.cz/test')
+        result = self.producer.crawl_url('https://www.novinky.cz/')
         self.assertIsNone(result)
 
 

@@ -8,7 +8,7 @@ def setup_logging(level: str, log_file: str):
     Set up logging configuration for the application.
 
     Args:
-        level (str): Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        level (str): Logging level (DEBUG, INFO, WARNING, ERROR)
         log_file (str): Path to the log file
     """
     # Create logs directory if it doesn't exist

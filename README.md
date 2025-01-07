@@ -116,6 +116,7 @@ logging:
   level: DEBUG
   file: logs/app.log
 ```
+logging has these levels (DEBUG, INFO, WARNING, ERROR)
 
 ---
 
