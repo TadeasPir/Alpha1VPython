@@ -150,6 +150,7 @@ web-crawler/
 │   └── config.yaml    # Configuration file
 └── logs/              # Log files
 └── articles/          # Stored articles
+└── main.py            # runable file 
 ```
 
 ---
