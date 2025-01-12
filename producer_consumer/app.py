@@ -23,7 +23,7 @@ class CrawlerApp:
             # Initialize producers with start URLs
             for i in range(self.config.producer_count):
                 if self.config.producer_count < 1:
-                    logging.exception("not enough producerers")
+                    logging.error("not enough producerers")
                     self.stop()
                 else:
                     producer = CrawlerProducer(
@@ -43,6 +43,7 @@ class CrawlerApp:
                     consume_interval=self.config.consume_interval,
                     output_dir=self.config.output_dir
                 )
+                
                 self.consumers.append(consumer)
                 logging.debug(f"Initialized {consumer.name}")
 

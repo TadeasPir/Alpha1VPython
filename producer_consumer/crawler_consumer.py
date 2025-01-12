@@ -50,12 +50,12 @@ class ArticleConsumer(threading.Thread):
         logging.info(f"{self.name} started.")
         while not self._stop_event.is_set():
             try:
-                article = self.queue.get(timeout=10)
+                article = self.queue.get(timeout=100)
                 self.save_article(article)
                 self.queue.task_done()
             except Exception as e:
-                if not isinstance(e, Queue.Empty):
-                    logging.warning(f"{self.name} failed to process article: {e}")
+                logging.warning(f"{self.name} failed to process article: {e}")
+                time.sleep(1)
             time.sleep(self.consume_interval)
 
         # Save remaining articles before stopping

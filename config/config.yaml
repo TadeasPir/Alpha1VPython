@@ -1,6 +1,6 @@
 producer:
-  count: 3
-  produce_interval: 2  # seconds
+  count: 2
+  produce_interval: 1  # seconds
   start_urls:
     - 'https://www.novinky.cz/'
     - 'https://www.idnes.cz/'
